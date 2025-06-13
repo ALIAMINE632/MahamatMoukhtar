@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bibliothèque Tchadienne - Mahamat Moukhtar Hissein</title>
+    <style>
+        /* Reset et styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* En-tête */
+        header {
+            background: linear-gradient(135deg, #013220, #228B22);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid white;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .header-content h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .header-content p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        /* Barre de recherche */
+        .search-bar {
+            padding: 1.5rem;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .search-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        #search-input {
+            width: 100%;
+            padding: 12px 20px;
+            border: 2px solid #013220;
+            border-radius: 25px;
+            font-size: 1rem;
+            outline: none;
+        }
+        
+        /* Informations personnelles */
+        .personal-info {
+            background-color: white;
+            padding: 1.5rem;
+            margin: 1.5rem auto;
+            max-width: 800px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .personal-info h2 {
+            color: #013220;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #228B22;
+            padding-bottom: 0.5rem;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        
+        .info-item {
+            margin-bottom: 0.5rem;
+        }
+        
+        .info-item strong {
+            color: #228B22;
+        }
+        
+        /* Section bibliothèque */
+        .library {
+            padding: 2rem 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .library h2 {
+            text-align: center;
+            font-size: 2rem;
+            color: #013220;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        .library h2::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: #228B22;
+            margin: 0.5rem auto;
+            border-radius: 2px;
+        }
+        
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .book-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #ddd;
+        }
+        
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+        
+        .book-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .book-info {
+            padding: 1.5rem;
+        }
+        
+        .book-info h3 {
+            color: #013220;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .book-author {
+            color: #228B22;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .book-desc {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .tchad-flag {
+            display: inline-block;
+            width: 20px;
+            height: 15px;
+            background: linear-gradient(90deg, #002664 0%, #002664 33%, #FECB00 33%, #FECB00 66%, #C60C30 66%, #C60C30 100%);
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+        
+        /* Pied de page */
+        footer {
+            background: #013220;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .footer-content p {
+            margin-bottom: 0.5rem;
+        }
+        
+        .contacts {
+            margin: 1.5rem 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+        
+        .contact-card {
+            background: rgba(255,255,255,0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            min-width: 200px;
+        }
+        
+        .contact-card h3 {
+            margin-bottom: 0.5rem;
+            color: #228B22;
+        }
+        
+        .social-links {
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            color: white;
+            margin: 0 10px;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: #228B22;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .books-grid {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+                gap: 1.5rem;
+            }
+            
+            .contacts {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .profile-img {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .header-content h1 {
+                font-size: 1.5rem;
+            }
+            
+            .books-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- En-tête avec photo de profil -->
+    <header>
+        <div class="header-content">
+            <img src="votre-photo.jpg" alt="Mahamat Moukhtar Hissein" class="profile-img">
+            <h1>MAHAMAT Moukhtar HISSEIN</h1>
+            <p>Bibliothèque des Auteurs Tchadiens - Futur Ingénieur ENASTIC</p>
+        </div>
+    </header>
+    
+    <!-- Barre de recherche -->
+    <div class="search-bar">
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Rechercher un auteur ou un livre...">
+        </div>
+    </div>
+    
+    <!-- Section informations personnelles -->
+    <section class="personal-info">
+        <h2>Coordonnées Personnelles</h2>
+        <div class="info-grid">
+            <div class="info-item"><strong>Date de naissance:</strong> 01/01/2004</div>
+            <div class="info-item"><strong>Lieu de naissance:</strong> Oum-Hadjer, Tchad</div>
+            <div class="info-item"><strong>Lieu de résidence:</strong> N'Djamena</div>
+            <div class="info-item"><strong>Quartier:</strong> Am-Rigeube</div>
+            <div class="info-item"><strong>Téléphone:</strong> 86 83 54 86 / 66 81 56 50</div>
+            <div class="info-item"><strong>Email:</strong> mahamatmoukhtarhissein141@gmail.com</div>
+        </div>
+    </section>
+    
+    <!-- Section bibliothèque -->
+    <section class="library">
+        <h2>Œuvres des Auteurs Tchadiens</h2>
+        
+        <div class="books-grid">
+            <!-- Livre 1 - Ali Abdramane Haggar -->
+            <div class="book-card">
+                <img src="ali-abdramane-haggar.jpg" alt="Ali Abdramane Haggar" class="book-img">
+                <div class="book-info">
+                    <h3>Le Tchad à travers les âges</h3>
+                    <span class="book-author"><span class="tchad-flag"></span>Ali Abdramane Haggar</span>
+                    <p class="book-desc">Une analyse historique approfondie du Tchad depuis l'époque précoloniale jusqu'à nos jours.</p>
+                </div>
+            </div>
+            
+            <!-- Livre 2 - Baba Moustapha -->
+            <div class="book-card">
+                <img src="baba-moustapha.jpg" alt="Baba Moustapha" class="book-img">
+                <div class="book-info">
+                    <h3>Le Souffle de l'Harmattan</h3>
+                    <span class="book-author"><span class="tchad-flag"></span>Baba Moustapha</span>
+                    <p class="book-desc">Roman poignant sur la vie dans le Sahel tchadien et les défis climatiques.</p>
+                </div>
+            </div>
+            
+            <!-- Livre 3 - Koulsy Lamko -->
+            <div class="book-card">
+                <img src="koulsy-lamko.jpg" alt="Koulsy Lamko" class="book-img">
+                <div class="book-info">
+                    <h3>La Phalène des collines</h3>
+                    <span class="book-author"><span class="tchad-flag"></span>Koulsy Lamko</span>
+                    <p class="book-desc">Œuvre majeure de la littérature tchadienne contemporaine traitant des conflits identitaires.</p>
+                </div>
+            </div>
+            
+            <!-- Livre 4 - Nadjilem Nadjita -->
+            <div class="book-card">
+                <img src="nadjilem-nadjita.jpg" alt="Nadjilem Nadjita" class="book-img">
+                <div class="book-info">
+                    <h3>Les Traditions Sara</h3>
+                    <span class="book-author"><span class="tchad-flag"></span>Nadjilem Nadjita</span>
+                    <p class="book-desc">Étude ethnographique des coutumes et traditions du peuple Sara du Sud du Tchad.</p>
+                </div>
+            </div>
+            
+            <!-- Livre 5 - Ahmat Taboye -->
+            <div class="book-card">
+                <img src="ahmat-taboye.jpg" alt="Ahmat Taboye" class="book-img">
+                <div class="book-info">
+                    <h3>Anthologie de la poésie tchadienne</h3>
+                    <span class="book-author"><span class="tchad-flag"></span>Ahmat Taboye</span>
+                    <p class="book-desc">Recueil des plus belles œuvres poétiques du Tchad, des origines à nos jours.</p>
+                </div>
+            </div>
+            
+            <!-- Livre 6 - Monique Ilboudo -->
+            <div class="book-card">
+                <img src="monique-ilboudo.jpg" alt="Monique Ilboudo" class="book-img">
+                <div class="book-info">
+                    <h3>Femmes tchadiennes: Portraits</h3>
+                    <span class="book-author"><span class="tchad-flag"></span>Monique Ilboudo</span>
+                    <p class="book-desc">Biographies inspirantes de femmes tchadiennes qui ont marqué l'histoire du pays.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Pied de page avec contacts -->
+    <footer>
+        <div class="footer-content">
+            <h3>Contactez-moi pour découvrir plus d'œuvres tchadiennes</h3>
+            
+            <div class="contacts">
+                <div class="contact-card">
+                    <h3>Téléphone</h3>
+                    <p>86 83 54 86</p>
+                    <p>66 81 56 50</p>
+                </div>
+                
+                <div class="contact-card">
+                    <h3>Email</h3>
+                    <p>mahamatmoukhtarhissein141@gmail.com</p>
+                </div>
+                
+                <div class="contact-card">
+                    <h3>Adresse</h3>
+                    <p>Am-Rigeube, N'Djamena</p>
+                    <p>Tchad</p>
+                </div>
+            </div>
+            
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="mailto:mahamatmoukhtarhissein141@gmail.com"><i class="fas fa-envelope"></i></a>
+            </div>
+            
+            <p>&copy; 2023 Bibliothèque des Auteurs Tchadiens - Mahamat Moukhtar Hissein</p>
+            <p>Futur Ingénieur de l'ENASTIC</p>
+        </div>
+    </footer>
+    
+    <!-- Icônes Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
+    <!-- Script pour la recherche -->
+    <script>
+        document.getElementById('search-input').addEventListener('keyup', function() {
+            const searchTerm = this.value.toLowerCase();
+            const bookCards = document.querySelectorAll('.book-card');
+            
+            bookCards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                if (text.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
